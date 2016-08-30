@@ -3,14 +3,12 @@
 from machine import Pin
 from time import sleep
 
-__author__ = "Umut Karcı"
-__email__ = "cediddi@gmail.com"
-__license__ = "MIT"
-__version__ = "1.0"
-
 
 class Morse:
-    """Morse is a helper class for generating and displaying morse code"""
+    """
+    Morse is a helper class for generating and displaying morse code
+    takes a Pin object and by default high on that pin means light, unless you set reverse_polarity to true.
+    """
     CODE = {'A': '.-', 'B': '-...', 'C': '-.-.',
             'D': '-..', 'E': '.', 'F': '..-.',
             'G': '--.', 'H': '....', 'I': '..',
@@ -59,7 +57,3 @@ class Morse:
                 sleep(0.5)
             elif c == "/":
                 sleep(0.9)
-
-
-print("'morse' LOADED")
-
