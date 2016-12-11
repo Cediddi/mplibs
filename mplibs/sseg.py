@@ -6,16 +6,16 @@ from machine import Pin
 class SevenSegment:
     """SevenSegment is a helper class for running a single 7segment display"""
     _PATTERNS = [
-        "abcdef",
-        "bc",
-        "abdeg",
-        "abcdg",
-        "bcfg",
-        "acdfg",
-        "acdefg",
-        "abc",
-        "abcdefg",
-        "abcdfg"
+        0b11111100,
+        0b01100000,
+        0b11011010,
+        0b11110010,
+        0b01100110,
+        0b10110110,
+        0b10111110,
+        0b11100000,
+        0b11111110,
+        0b11110110,
     ]
 
     @staticmethod
@@ -23,21 +23,23 @@ class SevenSegment:
         """
         Generates and initializes pins for seven segment, takes 8 integers a to g. h is optional.
         """
-        rval = {
-            "a": Pin(a, Pin.OUT),
-            "b": Pin(b, Pin.OUT),
-            "c": Pin(c, Pin.OUT),
-            "d": Pin(d, Pin.OUT),
-            "e": Pin(e, Pin.OUT),
-            "f": Pin(f, Pin.OUT),
-            "g": Pin(g, Pin.OUT),
-        }
+        rval = [
+            Pin(a, Pin.OUT)
+            Pin(b, Pin.OUT)
+            Pin(c, Pin.OUT)
+            Pin(d, Pin.OUT)
+            Pin(e, Pin.OUT)
+            Pin(f, Pin.OUT)
+            Pin(g, Pin.OUT)
+        ]
         if h is not None:
-            rval["h"] = Pin(h, Pin.OUT)
+            rval.append(Pin(h, Pin.OUT))
         return rval
 
     def __init__(self, pins, reverse_polarity=False):
         self._light = not reverse_polarity
+        if type(pins[0]) == int:
+            pins = self.generate_pins(*pins)
         self.pins = pins
 
     def clear(self):
@@ -49,5 +51,8 @@ class SevenSegment:
         assert 0 <= num <= 9
         numpattern = self._PATTERNS[num]
         self.clear()
-        for pos in numpattern:
-            self.pins[pos].value(self._light)
+        for idx, _pin in enumerate(self.pins):
+            if numpattern & bit:
+                _pin.value(self._light)
+            else:
+                _pin.value(not self._light)

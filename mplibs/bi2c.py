@@ -1,6 +1,7 @@
 """A better I2C class for bulk write operations"""
 
 import machine
+
 from mplibs.helpers import chunk
 
 

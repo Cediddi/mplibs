@@ -1,6 +1,5 @@
 """Morse Code Helper for esp8266"""
 
-from machine import Pin
 from time import sleep
 
 
