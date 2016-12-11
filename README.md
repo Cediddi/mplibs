@@ -22,7 +22,6 @@ Mainly some small stuff, helpers, experiments and etc.
   * better text handling.
   
 ## TODO:
-* **enable_adc_vcc.py** : In case 
 * _wemos_shields_/**dht11.py**
 * _wemos_shields_/**sdcard.py**
 * _wemos_shields_/**motor.py**
