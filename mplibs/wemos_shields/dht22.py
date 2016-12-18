@@ -1,3 +1,4 @@
+from machine import Pin
 from dht import DHT22
 from time import sleep
 
@@ -7,6 +8,6 @@ dht_conn = DHT22(Pin(D4))
 
 
 def measure_realtime():
-    dht.measure()
+    dht_conn.measure()
     sleep(0.2)
-    dht.measure()
+    dht_conn.measure()
