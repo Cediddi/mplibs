@@ -1,7 +1,7 @@
 from machine import I2C, Pin
 from ssd1306 import SSD1306_I2C
 
-from wemos.helpers import chunk
+from mplibs.helpers import chunk
 from mplibs.wemos import *
 
 i2c = I2C(Pin(SCL), Pin(SDA))

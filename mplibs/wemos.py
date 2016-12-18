@@ -1,8 +1,8 @@
 """Wemos board, pin layout"""
-D0 = 16
-D1 = CHDP = 5
-D2 = SCL = 4
-D3 = SDA = 0
+D0 = DEEPSLEEP_WAKE = 16
+D1 = SCL = 5
+D2 = SDA = 4
+D3 = 0
 D4 = BUILTIN_LED = 2
 D5 = SCK = 14
 D6 = MISO = 12
