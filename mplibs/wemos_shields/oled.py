@@ -4,7 +4,7 @@ from ssd1306 import SSD1306_I2C
 from mplibs.helpers import chunk
 from mplibs.wemos import *
 
-i2c = I2C(Pin(SCL), Pin(SDA))
+i2c = I2C(scl=Pin(SCL), sda=Pin(SDA))
 oled_conn = SSD1306_I2C(64, 48, i2c)
 
 
